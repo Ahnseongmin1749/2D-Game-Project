@@ -61,14 +61,14 @@ public class Player : MonoBehaviour
             anim.SetBool("Moving", false);
         }
 
-        if (rigid.linearVelocity.x == 5)
+        /*if (rigid.linearVelocity.x == 5)
         {
             spriteRenderer.flipX = true;
         }
         else if (rigid.linearVelocity.x == -5)
         {
             spriteRenderer.flipX = false;
-        }
+        }*/
 
     }
 
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Portal")
         {
@@ -97,5 +97,5 @@ public class Player : MonoBehaviour
                 WildMap.SetActive(true);
             }
         }
-    }
+    }*/
 }

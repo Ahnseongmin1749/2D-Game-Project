@@ -1,14 +1,19 @@
 fileFormatVersion: 2
-guid: fc1d67a4622f38e4a97f5152c1977ca9
-AssetOrigin:
-  serializedVersion: 1
-  productId: 248158
-  packageName: Platformer Tileset - Pixelart Grasslands
-  packageVersion: 1.0
-  assetPath: Assets/BigManJD/Platformer Tileset - Pixelart Grasslands/Enemy/EnemySheet.png
-  uploadId: 577368
+guid: 1fa5754756549a243b7e85217c9b87e5
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4257920100153542165
+    second: test_front_0
+  - first:
+      213: -4937283857508619903
+    second: test_front_1
+  - first:
+      213: 3780676458948098163
+    second: test_front_2
+  - first:
+      213: 6717729282486918111
+    second: test_front_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +77,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -100,119 +105,93 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemySheet_0
+      name: test_front_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 7, y: 2}
-        - {x: 4, y: 6}
-        - {x: -3, y: 6}
-        - {x: -7, y: 3}
-        - {x: -7, y: -3}
-        - {x: 7, y: -3}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d78404ba0bb312a4e8ab78eda015874c
-      internalID: -349251051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySheet_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 2, y: -7}
-        - {x: 7, y: -2}
-        - {x: 7, y: 3}
-        - {x: 2, y: 8}
-        - {x: -3, y: 8}
-        - {x: -7, y: 3}
-        - {x: -7, y: -2}
-        - {x: -2, y: -7}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39b058fe8adfa8a4cbeefd6eeac3e02f
-      internalID: -1192856051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 16
+        width: 14
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 7, y: -3}
-        - {x: 7, y: 3}
-        - {x: 2, y: 7}
-        - {x: -2, y: 7}
-        - {x: -7, y: 3}
-        - {x: -7, y: -2}
-        - {x: -3, y: -7}
-        - {x: 3, y: -7}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 789b0e875c46f4348aa1b1d95975de1a
-      internalID: -1108010685
+      spriteID: be93a547a34d8e4c0800000000000000
+      internalID: -4257920100153542165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test_front_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189aded8d7e3b7bb0800000000000000
+      internalID: -4937283857508619903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test_front_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37878426539a77430800000000000000
+      internalID: 3780676458948098163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test_front_3
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdb5fdbb03b2a3d50800000000000000
+      internalID: 6717729282486918111
       vertices: []
       indices: 
       edges: []
@@ -221,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -231,9 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EnemySheet_0: -349251051
-      EnemySheet_1: -1192856051
-      EnemySheet_2: -1108010685
+      test_front_0: -4257920100153542165
+      test_front_1: -4937283857508619903
+      test_front_2: 3780676458948098163
+      test_front_3: 6717729282486918111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
