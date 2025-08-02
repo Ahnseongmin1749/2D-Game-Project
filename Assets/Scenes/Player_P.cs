@@ -6,6 +6,7 @@ public class Player_Platformer : MonoBehaviour
     float move;
     public float speed;
     public float jump;
+    bool isDamageing;
 
     Animator anim;
     SpriteRenderer spriteRenderer;
@@ -33,17 +34,7 @@ public class Player_Platformer : MonoBehaviour
 
         //Jump Animation
         anim.SetBool("isJump", isjumping);
-        /*if (isjumping)
-        { 
-            if (rigid.linearVelocity.x > 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else
-            {
-                spriteRenderer.flipX = false;
-            }
-        }*/
+        
 
 
         //Move Animation
@@ -67,9 +58,13 @@ public class Player_Platformer : MonoBehaviour
     private void FixedUpdate()
     {
         //Move
-        move = Input.GetAxisRaw("Horizontal");
+        if (!isDamageing)
+        {
+            move = Input.GetAxisRaw("Horizontal");
 
-        rigid.linearVelocity = new Vector2(move * speed, rigid.linearVelocity.y);
+            rigid.linearVelocity = new Vector2(move * speed, rigid.linearVelocity.y);
+        }
+        
 
         //Ray
         if (rigid.linearVelocity.y < 0)
@@ -88,5 +83,25 @@ public class Player_Platformer : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //몬스터에 닿았을때 넉백
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("CollisionCheck");
+            int xKnockback = transform.position.x - collision.transform.position.x > 0 ? 1 : -1;
+            rigid.AddForce(new Vector2(xKnockback, 1) * 7, ForceMode2D.Impulse);
+            isDamageing = true;
+
+            Invoke("EndDamaging", 0.3f);
+        }
+    }
+
+    void EndDamaging()
+    {
+        //데미지상태 풀기
+        isDamageing = false;
     }
 }

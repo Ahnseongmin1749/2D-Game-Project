@@ -5,19 +5,20 @@ TagManager:
   serializedVersion: 3
   tags:
   - Portal
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
   - Platform
-  - 
+  - Wall
   - 
   - 
   - 
