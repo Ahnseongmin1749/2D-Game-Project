@@ -3,24 +3,28 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    Dictionary<int, string> mapList;
+    Dictionary<int, GameObject[]> PortalData;
     public GameObject[] map_arr;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mapList = new Dictionary<int, string>();
+        PortalData = new Dictionary<int, GameObject[]>();
         MapListAdd();
     }
 
     void MapListAdd()
     {
-        mapList.Add(1, "WildMap");
-        mapList.Add(2, "Village");
+        PortalData.Add(1, new GameObject[] { map_arr[0], map_arr[1] });
+        PortalData.Add(2, new GameObject[] { map_arr[1], map_arr[0] });
     }
 
-    public string GetMapList(int id)
+    public GameObject GetCurrentMap(int id)
     {
-        return mapList[id];
+        return PortalData[id][0];
+    }
+    public GameObject GetTargetMap(int id)
+    {
+        return PortalData[id][1];
     }
 
     // Update is called once per frame
