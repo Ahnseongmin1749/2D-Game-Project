@@ -24,10 +24,10 @@ public class Enemy_P : MonoBehaviour
 
     private void Start()
     {
-        Invoke("EnemyMove", 1);
+        EnemyUsualMove();
     }
 
-    void EnemyMove()
+    /*void EnemyMove()
     {
         if (!isjumping && !isplayerchecking)
         {
@@ -45,6 +45,37 @@ public class Enemy_P : MonoBehaviour
             rigid.AddForce(new Vector2(direction * 3, 5), ForceMode2D.Impulse);
             Invoke("EnemyMove", 0.5f);
         }
+    }*/
+
+    void EnemyUsualMove()
+    {
+        nextJumpdirection = Random.Range(-1, 2);
+        nextJumpTime = Random.Range(1, 4);
+        isjumping = true;
+        rigid.AddForce(new Vector2(nextJumpdirection * 3, 5), ForceMode2D.Impulse);
+        if (!isplayerchecking)
+        {
+            Invoke("EnemyUsualMove", nextJumpTime);
+        }
+        else if (isplayerchecking)
+        {
+            Invoke("EnemyAngryMove", 0.5f);
+        }
+    }
+
+    void EnemyAngryMove()
+    {
+        float direction = Mathf.Sign(player.transform.position.x - transform.position.x);
+        isjumping = true;
+        rigid.AddForce(new Vector2(direction * 4, 6), ForceMode2D.Impulse);
+        if (!isplayerchecking)
+        {
+            Invoke("EnemyUsualMove", 0.5f);
+        }
+        else if (isplayerchecking)
+        {
+            Invoke("EnemyAngryMove", 0.5f);
+        }
     }
 
     /*private void OnCollisionEnter2D(Collision2D collision)
@@ -58,11 +89,7 @@ public class Enemy_P : MonoBehaviour
     }*/
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Update()
-    {
-        anim.SetBool("isJumping", isjumping);
-        anim.SetBool("isPlayerChecking", isplayerchecking);
-    }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -74,7 +101,7 @@ public class Enemy_P : MonoBehaviour
         PlayerCheckRay();
 
         Debug.Log("플레이어 체크 " + isplayerchecking);
-        Debug.Log("플립 체크 " +  spriteRenderer.flipX);
+        Debug.Log("플립 체크 " + spriteRenderer.flipX);
 
 
         if (rigid.linearVelocity.x < 0)
@@ -85,7 +112,12 @@ public class Enemy_P : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-            
+
+    }
+    void Update()
+    {
+        anim.SetBool("isJumping", isjumping);
+        anim.SetBool("isPlayerChecking", isplayerchecking);
     }
 
     void PlatfromCheckRay()
@@ -113,20 +145,30 @@ public class Enemy_P : MonoBehaviour
         // 플레이어 감지 ray, 플립기준 삼항연산자 ray 방향 판단
         Vector2 xRayDirection = spriteRenderer.flipX ? Vector2.left : Vector2.right;
         Debug.DrawRay(transform.position, xRayDirection * 5f, new Color(1, 1, 0, 0.7f));
+        Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), xRayDirection * 5f, new Color(1, 1, 0, 0.7f));
+        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), xRayDirection * 5f, new Color(1, 1, 0, 0.7f));
 
-        playercheckray = Physics2D.Raycast(transform.position, xRayDirection,
-        5f, LayerMask.GetMask("Player"));
-        if (playercheckray.collider != null)
+        Vector3[] rayOrigins = new Vector3[]
         {
-            if (playercheckray.collider.gameObject.layer == 3)
+        transform.position,                          // 가운데
+        transform.position + new Vector3(0, -0.5f, 0), // 아래쪽
+        transform.position + new Vector3(0,  0.5f, 0)  // 위쪽
+        };
+
+        isplayerchecking = false;
+
+        foreach (Vector3 rayOrigin in rayOrigins)
+        {
+            playercheckray = Physics2D.Raycast(rayOrigin, xRayDirection, 5f, LayerMask.GetMask("Player"));
+            if (playercheckray.collider != null)
             {
-                isplayerchecking = true;
-            }
+                if (playercheckray.collider.gameObject.layer == 3)
+                {
+                    isplayerchecking = true;
+                }
 
+            }
         }
-        else if (playercheckray.collider == null)
-        {
-            isplayerchecking = false;
-        }
+
     }
 }
