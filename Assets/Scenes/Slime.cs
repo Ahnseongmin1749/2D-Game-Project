@@ -119,6 +119,11 @@ public class Enemy_P : MonoBehaviour
         anim.SetBool("isJumping", isjumping);
         anim.SetBool("isPlayerChecking", isplayerchecking);
     }
+    void Update()
+    {
+        anim.SetBool("isJumping", isjumping);
+        anim.SetBool("isPlayerChecking", isplayerchecking);
+    }
 
     void PlatfromCheckRay()
     {
