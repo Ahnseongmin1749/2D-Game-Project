@@ -90,7 +90,6 @@ public class Player_Platformer : MonoBehaviour
         //¸ó½ºÅÍ¿¡ ´ê¾ÒÀ»¶§ ³Ë¹é
         if (collision.gameObject.layer == 6)
         {
-            Debug.Log("CollisionCheck");
             int xKnockback = transform.position.x - collision.transform.position.x > 0 ? 1 : -1;
             rigid.AddForce(new Vector2(xKnockback, 1) * 7, ForceMode2D.Impulse);
             isDamageing = true;
