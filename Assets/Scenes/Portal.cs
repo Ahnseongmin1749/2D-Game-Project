@@ -22,7 +22,6 @@ public class Portal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("c1");
             if (Input.GetButtonDown("Jump"))
             {
                 /*Debug.Log("c2");
