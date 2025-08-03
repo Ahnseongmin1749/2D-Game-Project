@@ -12,6 +12,8 @@ public class Player_Platformer : MonoBehaviour
     SpriteRenderer spriteRenderer;
     bool isjumping;
     RaycastHit2D ray;
+
+    bool islookright;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -23,7 +25,11 @@ public class Player_Platformer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //시선 bool값
+        if (rigid.linearVelocity.x > 0)
+            islookright = true;
+        else if ((rigid.linearVelocity.x < 0))
+            islookright = false;
 
         //Jump
         if (Input.GetButtonDown("Jump") && !isjumping)
@@ -87,19 +93,31 @@ public class Player_Platformer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //몬스터에 닿았을때 넉백
+        
         if (collision.gameObject.layer == 6)
         {
-            int xKnockback = transform.position.x - collision.transform.position.x > 0 ? 1 : -1;
-            rigid.AddForce(new Vector2(xKnockback, 1) * 7, ForceMode2D.Impulse);
-            isDamageing = true;
-
-            Invoke("EndDamaging", 0.3f);
+            OnDamaged(collision);
         }
     }
 
-    void EndDamaging()
+    void OnDamaged(Collision2D col)
     {
+        //피격시 색깔 바꾸기
+        spriteRenderer.color = new Color(0.78f, 0.78f, 0.78f, 0.7f);
+
+        //피격시 넉백
+        int xKnockback = transform.position.x - col.transform.position.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(xKnockback, 1) * 7, ForceMode2D.Impulse);
+        isDamageing = true;
+
+        Invoke("EndDamaged", 0.3f);
+    }
+
+    void EndDamaged()
+    {
+        //색깔 원상복귀
+        spriteRenderer.color = new Color(1, 1, 1, 1f);
+
         //데미지상태 풀기
         isDamageing = false;
     }
